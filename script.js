@@ -73,7 +73,7 @@ function addCardToDeck() {
     card.style.zIndex = 50000 - currentPhotoIndex; // Keeps lower indices visually on top
     
     let img = document.createElement('img');
-    img.src = `photo/${photo}`;
+    img.src = `./photo/${photo}`;
     img.setAttribute('decoding', 'async'); // Pushes image decoding to a background CPU thread!
     img.onerror = function() { this.onerror = null; this.src = 'https://via.placeholder.com/300x400/8A2387/FFFFFF?text=Memory'; };
     
