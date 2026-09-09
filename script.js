@@ -208,11 +208,26 @@ function fireConfetti() {
 // POETRY AUDIO PLAYER LOGIC
 const musicBtn = document.getElementById('music-toggle');
 const bgAudio = document.getElementById('bg-audio');
+
 if (musicBtn && bgAudio) {
-    musicBtn.addEventListener('click', () => {
+    // Attempt autoplay logic on first interaction
+    document.body.addEventListener('click', function autoPlayOnce() {
         if (bgAudio.paused) {
-            bgAudio.play();
-            musicBtn.innerText = "⏸️ Pause Poetry";
+            bgAudio.play().then(() => {
+                musicBtn.innerText = "⏸️ Pause Poetry";
+            }).catch(e => console.log("Autoplay waiting for direct button click."));
+        }
+        document.body.removeEventListener('click', autoPlayOnce);
+    }, { once: true });
+
+    musicBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent body click from firing
+        if (bgAudio.paused) {
+            bgAudio.play().then(() => {
+                musicBtn.innerText = "⏸️ Pause Poetry";
+            }).catch(error => {
+                alert("Please wait a moment for the audio to load, or check your volume! Error: " + error.message);
+            });
         } else {
             bgAudio.pause();
             musicBtn.innerText = "🎵 Play Poetry";
