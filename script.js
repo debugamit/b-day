@@ -205,5 +205,20 @@ function fireConfetti() {
     }, 350); // Increased interval delay to save CPU cycles
 }
 
+// POETRY AUDIO PLAYER LOGIC
+const musicBtn = document.getElementById('music-toggle');
+const bgAudio = document.getElementById('bg-audio');
+if (musicBtn && bgAudio) {
+    musicBtn.addEventListener('click', () => {
+        if (bgAudio.paused) {
+            bgAudio.play();
+            musicBtn.innerText = "⏸️ Pause Poetry";
+        } else {
+            bgAudio.pause();
+            musicBtn.innerText = "🎵 Play Poetry";
+        }
+    });
+}
+
 setInterval(checkBirthday, 1000);
 checkBirthday();
