@@ -1,0 +1,14 @@
+{
+  "name": "birthday-email-sender",
+  "version": "1.0.0",
+  "description": "Yearly cron job to send a beautiful Canva-style birthday email.",
+  "main": "email_worker.js",
+  "scripts": {
+    "start": "node email_worker.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "node-cron": "^3.0.2",
+    "nodemailer": "^6.9.4"
+  }
+}

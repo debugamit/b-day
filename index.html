@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Love!</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Import Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <div id="countdown-view" class="view glass active">
+        <h1>Counting Down To My Favorite Person...</h1>
+        <div id="timer">
+            <div class="time-box"><span id="days">00</span><p>Days</p></div>
+            <div class="time-box"><span id="hours">00</span><p>Hours</p></div>
+            <div class="time-box"><span id="minutes">00</span><p>Minutes</p></div>
+            <div class="time-box"><span id="seconds">00</span><p>Seconds</p></div>
+        </div>
+        <p class="waiting-text">A little magic unlocks at exactly midnight. <span class="beating-heart">❤️</span></p>
+    </div>
+
+    <div id="celebration-view" class="view hidden">
+        <div class="header-container">
+            <div class="svg-container">
+                <svg class="drawing-text" viewBox="0 0 1000 200">
+                    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle">Happy Bday Shubhi ✨</text>
+                </svg>
+            </div>
+            <p class="subtitle">Your radiant smile lights up my world. Your impactful presence changes everything. To the most fun-loving, mesmerizing soul I know — every second with you is pure magic.</p>
+        </div>
+
+        <!-- TOP 4 SOLO PHOTOS -->
+        <div class="solo-gallery">
+            <div class="solo-card glass"><img src="photo/20241010_215646.jpg" alt="Gorgeous"></div>
+            <div class="solo-card glass"><img src="photo/20241011_221323.jpg" alt="Stunning"></div>
+            <div class="solo-card glass"><img src="photo/20250302_182233.jpg" alt="Beautiful"></div>
+            <div class="solo-card glass"><img src="photo/20250516_212240.jpg" alt="Radiant"></div>
+        </div>
+
+        <p class="subtitle" style="margin-top: 40px; margin-bottom: 20px;">And here are all the beautiful moments we've shared...</p>
+
+        <!-- THE INNOVATIVE MEMORY DECK -->
+        <div id="memory-deck-container">
+            <div id="memory-deck"></div>
+            <p class="deck-hint">Tap a photo to flip through all 85 of our magical memories! 💖</p>
+        </div>
+
+        <div class="traits">
+            <div class="trait glass">✨ Radiant Energy</div>
+            <div class="trait glass">💥 Impactful Presence</div>
+            <div class="trait glass">🎉 Fun Loving Soul</div>
+            <div class="trait glass">🌌 Mesmerizing Eyes</div>
+        </div>
+        
+        <p class="footer-msg">I love you endlessly. Here's to making a million more memories together. <span class="beating-heart">❤️</span></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
