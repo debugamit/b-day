@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Birthday Surprise</title>
+    <link rel="stylesheet" href="/generator.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Build a Birthday Surprise ✨</h1>
+        <p>Create a stunning, personalized countdown and photo deck in minutes!</p>
+
+        <form id="generator-form">
+            <div class="form-group">
+                <label for="recipientName">Recipient's Name</label>
+                <input type="text" id="recipientName" name="recipientName" placeholder="e.g., Shubhi" required>
+            </div>
+
+            <div class="form-group">
+                <label for="countdownDate">Surprise Reveal Date & Time</label>
+                <input type="datetime-local" id="countdownDate" name="countdownDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="subtitle">Special Message / Subtitle</label>
+                <textarea id="subtitle" name="subtitle" rows="3" placeholder="A short heartfelt message..." required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="shayari">Custom Poetry / Shayari (Optional)</label>
+                <textarea id="shayari" name="shayari" rows="5" placeholder="Leave empty to use the default romantic poetry..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="traits">Traits (comma-separated)</label>
+                <input type="text" id="traits" name="traits" placeholder="e.g., Radiant Energy, Fun Loving Soul" required>
+            </div>
+
+            <div class="form-group">
+                <label for="soloPhotos">Upload exactly 4 Solo Photos (Featured Gallery)</label>
+                <input type="file" id="soloPhotos" name="soloPhotos" accept="image/*" multiple required>
+                <small id="solo-warning" style="color: red; display: none;">Please select exactly 4 photos.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="deckPhotos">Upload up to 85 Gallery Photos (Memory Deck)</label>
+                <input type="file" id="deckPhotos" name="deckPhotos" accept="image/*" multiple required>
+            </div>
+
+            <button type="submit" id="submit-btn">Generate Surprise Link 🪄</button>
+        </form>
+        
+        <div id="result-container" class="hidden">
+            <h2>Surprise Generated! 🎉</h2>
+            <p>Share this link with them:</p>
+            <input type="text" id="generated-link" readonly>
+            <a id="visit-link" href="#" target="_blank">Visit Page</a>
+        </div>
+    </div>
+    <script src="/generator.js"></script>
+</body>
+</html>

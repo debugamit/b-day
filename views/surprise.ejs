@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, <%= surprise.recipientName %>!</title>
+    <link rel="stylesheet" href="/surprise.css">
+    <!-- Import Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        // Inject configuration from the backend
+        window.SURPRISE_CONFIG = {
+            recipientName: "<%= surprise.recipientName %>",
+            countdownDate: "<%= surprise.countdownDate.toISOString() %>",
+            soloPhotos: <%- JSON.stringify(surprise.soloPhotos) %>,
+            deckPhotos: <%- JSON.stringify(surprise.deckPhotos) %>
+        };
+    </script>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <div id="countdown-view" class="view glass active">
+        <h1>Counting Down To My Favorite Person...</h1>
+        <div id="timer">
+            <div class="time-box"><span id="days">00</span><p>Days</p></div>
+            <div class="time-box"><span id="hours">00</span><p>Hours</p></div>
+            <div class="time-box"><span id="minutes">00</span><p>Minutes</p></div>
+            <div class="time-box"><span id="seconds">00</span><p>Seconds</p></div>
+        </div>
+        <p class="waiting-text">A little magic unlocks at exactly midnight. <span class="beating-heart">❤️</span></p>
+    </div>
+
+    <div id="celebration-view" class="view hidden">
+        <div class="header-container">
+            <div class="svg-container">
+                <svg class="drawing-text" viewBox="0 0 1000 200">
+                    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle">Happy Bday <%= surprise.recipientName %> ✨</text>
+                </svg>
+            </div>
+            <p class="subtitle"><%= surprise.subtitle %></p>
+        </div>
+
+        <!-- TOP 4 SOLO PHOTOS -->
+        <div class="solo-gallery">
+            <% surprise.soloPhotos.forEach(photo => { %>
+                <div class="solo-card glass"><img src="/uploads/<%= photo %>" alt="Solo Photo"></div>
+            <% }) %>
+        </div>
+
+        <!-- ROMANTIC SHAYARI SECTION -->
+        <div class="shayari-card glass">
+            <div class="shayari-text">
+                <% if (surprise.shayari && surprise.shayari.trim() !== '') { %>
+                    <% surprise.shayari.split('\n').forEach(line => { %>
+                        <p><%= line %></p>
+                    <% }) %>
+                <% } else { %>
+                    <p>शाम समय इक ऊँची सीढ़ियों वाले घर के आँगन में<br>चाँद को उतरे देखा हम ने चाँद भी कैसा पूरा चाँद</p>
+                    <p>'इंशा' जी इन चाहने वाली देखने वाली आँखों ने<br>मुल्कों मुल्कों शहरों शहरों कैसा कैसा देखा चाँद</p>
+                    <p>हर इक चाँद की अपनी धज थी हर इक चाँद का अपना रूप<br>लेकिन ऐसा रौशन-रौशन हँसता बातें करता चाँद</p>
+                    <p>दर्द की टीस तो उठती थी पर इतनी भी भरपूर कभी<br>आज से पहले कब उतरा था दिल में इतना गहरा चाँद</p>
+                    <p>हम ने तो क़िस्मत के डर से जब पाए अँधियारे पाए<br>ये भी चाँद का सपना होगा कैसा चाँद कहाँ का चाँद</p>
+                    <p>'इंशा' जी दुनिया वालों में बे-साथी बे-दोस्त रहे<br>जैसे तारों की झुरमुट में तन्हा चाँद अकेला चाँद</p>
+                    <p>उन का दामन इस दौलत से ख़ाली का ख़ाली ही रहा<br>वर्ना थे दुनिया में कितने चाँदी चाँद और सोना चाँद</p>
+                    <p>जग के चारों कूट में घूमा सैलानी हैराँ हो कर<br>इस बस्ती के इस कूचे के इस आँगन में ऐसा चाँद</p>
+                    <p>आँखों में भी चितवन में भी चाँद ही चाँद झलकते हैं<br>चाँद ही टीका चाँद ही झूमर चेहरा चाँद और माथा चाँद</p>
+                    <p>एक ये चाँद-नगर का बासी जिस से दूर रहा संजोग<br>वर्ना इस दुनिया में सब ने चाहा चाँद और पाया चाँद</p>
+                    <p>अंबर ने धरती पर फेंकी नूर की छींट उदास उदास<br>आज की शब तो अंधी शब थी आज किधर से निकला चाँद</p>
+                    <p>'इंशा' जी ये और नगर है इस बस्ती की रीत यही<br>सब की अपनी अपनी आँखें सब का अपना अपना चाँद</p>
+                    <p>अपने सीने के मतला' पर जो चमका वो चाँद हुआ<br>जिस ने मन के अँधियारे में आन किया उजियारा चाँद</p>
+                    <p>चंचल मुस्काती मुस्काती गोरी का मुखड़ा महताब<br>पतझड़ के पेड़ों में अटका पीला सा इक पत्ता चाँद</p>
+                    <p>दुख का दरिया सुख का सागर इस के दम से देख लिए<br>हम को अपने साथ ही ले कर डूबा चाँद और उभरा चाँद</p>
+                    <p>झुकी झुकी पलकों के नीचे नमनाकी का नाम न था<br>ये काँटा जो हमें चुभा है काश तुझे भी चुभता चाँद</p>
+                    <p>रौशनियों की पीली किर्चें पूरब पच्छिम फैल गईं<br>तू ने किस शय के धोके में पत्थर पर दे पटका चाँद</p>
+                    <p>हम ने तो दोनों को देखा दोनों ही बे-दर्द कठोर<br>धरती वाला अंबर वाला पहला चाँद और दूजा चाँद</p>
+                    <p>चाँद किसी का हो नहीं सकता चाँद किसी का होता है<br>चाँद की ख़ातिर ज़िद नहीं करते ऐ मिरे अच्छे 'इंशा' चाँद</p>
+                <% } %>
+            </div>
+        </div>
+
+        <p class="subtitle" style="margin-top: 40px; margin-bottom: 20px;">And here are all the beautiful moments we've shared...</p>
+
+        <!-- THE INNOVATIVE MEMORY DECK -->
+        <div id="memory-deck-container">
+            <div id="memory-deck"></div>
+            <p class="deck-hint">Tap a photo to flip through all <%= surprise.deckPhotos.length %> of our magical memories! 💖</p>
+        </div>
+
+        <div class="traits">
+            <% surprise.traits.forEach(trait => { %>
+                <div class="trait glass">✨ <%= trait %></div>
+            <% }) %>
+        </div>
+        
+        <p class="footer-msg">I love you endlessly. Here's to making a million more memories together. <span class="beating-heart">❤️</span></p>
+    </div>
+
+    <!-- POETRY AUDIO PLAYER -->
+    <audio id="bg-audio" src="/poetry.mp3" loop preload="auto"></audio>
+    <button id="music-toggle" class="glass">🎵 Play Poetry</button>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="/surprise.js"></script>
+</body>
+</html>

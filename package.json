@@ -4,11 +4,19 @@
   "description": "Yearly cron job to send a beautiful Canva-style birthday email.",
   "main": "email_worker.js",
   "scripts": {
-    "start": "node email_worker.js"
+    "start": "node server.js",
+    "worker": "node email_worker.js"
   },
   "dependencies": {
+    "cors": "^2.8.6",
     "dotenv": "^16.3.1",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "multer": "^2.3.0",
     "node-cron": "^3.0.2",
-    "nodemailer": "^6.9.4"
+    "nodemailer": "^6.9.4",
+    "sequelize": "^6.37.8",
+    "sqlite3": "^6.0.1",
+    "uuid": "^14.0.2"
   }
 }

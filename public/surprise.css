@@ -1,0 +1,164 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+html, body {
+    margin: 0; padding: 0;
+    color: white;
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-color: #11001c;
+    /* Custom Cute Raccoon Cursor */
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" style="font-size:38px"><text y="40">🦝</text></svg>'), auto;
+}
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: linear-gradient(-45deg, #11001c, #41295a, #8A2387, #E94057, #ff758c);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    z-index: -2;
+    transform: translateZ(0); /* Force Hardware Acceleration */
+    will-change: background-position;
+}
+@keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+#particles-js { position: fixed; width: 100vw; height: 100vh; top: 0; left: 0; z-index: -1; pointer-events: none; transform: translateZ(0); will-change: transform;}
+.glass {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(255,255,255,0.05);
+    border-radius: 20px;
+    transform: translateZ(0);
+    will-change: transform, backdrop-filter;
+}
+.view { display: none; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 40px 20px; text-align: center; position: relative; z-index: 10;}
+.view.active { display: flex; animation: fadeIn 2.5s ease-in-out; }
+.view.hidden { display: none !important; }
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); filter: blur(10px); } to { opacity: 1; transform: scale(1); filter: blur(0); } }
+
+h1 { font-size: 3rem; font-weight: 600; margin-bottom: 10px; letter-spacing: 2px; }
+#countdown-view h1 { text-shadow: 0 0 20px rgba(255, 117, 140, 0.6); }
+.waiting-text { margin-top: 30px; font-size: 1.1rem; opacity: 0.9; font-style: italic; }
+
+#timer { display: flex; gap: 20px; margin-top: 20px; animation: pulseTimer 3s infinite ease-in-out;}
+@keyframes pulseTimer { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+
+.time-box { padding: 20px; width: 110px; text-align: center; border-radius: 15px; background: rgba(0,0,0,0.3); box-shadow: inset 0 0 15px rgba(255,117,140,0.1); border: 1px solid rgba(255,117,140,0.2);}
+.time-box span { font-size: 2.8rem; font-weight: 600; display: block; color: #ffeb3b; text-shadow: 0 0 20px rgba(255, 235, 59, 0.6); }
+.time-box p { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.9; margin-top: 5px; color: #ffd700;}
+
+.header-container { margin-bottom: 30px; }
+.subtitle { font-size: 1.3rem; max-width: 700px; margin: 0 auto; opacity: 0.95; line-height: 1.6; text-shadow: 0 2px 4px rgba(0,0,0,0.5);}
+
+/* SELF-DRAWING SVG TEXT ANIMATION */
+.svg-container { width: 100%; max-width: 900px; margin: 0 auto; }
+.drawing-text { width: 100%; height: auto; overflow: visible; }
+.drawing-text text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 110px;
+    fill: transparent;
+    stroke: #FFD700; /* Gold drawing stroke */
+    stroke-width: 3px;
+    stroke-dasharray: 1500;
+    stroke-dashoffset: 1500;
+    animation: drawText 4s forwards cubic-bezier(0.4, 0, 0.2, 1), fillText 2s 3.5s forwards ease-in-out;
+    filter: drop-shadow(0 0 20px rgba(233, 64, 87, 0.8));
+}
+@keyframes drawText { to { stroke-dashoffset: 0; } }
+@keyframes fillText { to { fill: #ffffff; stroke-width: 0; filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.9)); } }
+
+/* SOLO GALLERY STYLES (REAL-TIME RENDERING) */
+.solo-gallery { display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px; width: 100%; max-width: 1100px; z-index: 20; perspective: 1000px;}
+.solo-card { padding: 12px; width: 230px; height: 300px; transform-style: preserve-3d; }
+.solo-card img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; transform: translateZ(40px); /* Pops image out in 3D */ }
+
+/* SHAYARI STYLES */
+.shayari-card {
+    max-width: 750px;
+    margin: 40px auto;
+    padding: 35px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(255, 117, 140, 0.2), rgba(255, 255, 255, 0.05));
+    border: 2px solid rgba(255, 117, 140, 0.7);
+    border-radius: 25px;
+    box-shadow: 0 0 40px rgba(233, 64, 87, 0.5), inset 0 0 20px rgba(255, 215, 0, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    z-index: 20;
+    backdrop-filter: blur(15px);
+}
+.shayari-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 60px rgba(255, 117, 140, 0.8), inset 0 0 40px rgba(255, 215, 0, 0.4);
+}
+.shayari-text {
+    font-family: 'Poppins', sans-serif; /* Changed from cursive to support beautiful Hindi */
+    font-size: 1.25rem;
+    color: #FFD700;
+    line-height: 1.8;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 2px 5px rgba(0, 0, 0, 0.9);
+}
+.shayari-text p { margin-bottom: 20px; }
+.shayari-text p:last-child { margin-bottom: 0; }
+
+/* AUDIO BUTTON STYLES */
+#music-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: 2px solid rgba(255,215,0,0.6);
+    background: rgba(17, 0, 28, 0.7);
+    color: #FFD700;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" style="font-size:38px"><text y="40">💖</text></svg>'), pointer; 
+    z-index: 1000;
+    transition: 0.3s;
+    backdrop-filter: blur(10px);
+}
+#music-toggle:hover {
+    background: rgba(255,215,0,0.2);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(255, 215, 0, 0.4);
+}
+
+/* INNOVATIVE MEMORY DECK STYLES */
+#memory-deck-container { margin: 30px auto 50px; display: flex; flex-direction: column; align-items: center; }
+#memory-deck { position: relative; width: 320px; height: 420px; margin-bottom: 30px; perspective: 1000px; }
+.polaroid { 
+    position: absolute; width: 100%; height: 100%; 
+    background: #fff; 
+    padding: 12px 12px 60px 12px; 
+    border-radius: 12px; 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 0 10px rgba(0,0,0,0.1); 
+    /* Cute heart cursor when hovering over photos */
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" style="font-size:38px"><text y="40">💖</text></svg>'), pointer; 
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s;
+    user-select: none;
+    will-change: transform;
+}
+.polaroid img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; pointer-events: none;}
+.polaroid:hover { box-shadow: 0 20px 50px rgba(255, 215, 0, 0.6); }
+.polaroid.thrown-left { transform: translate(-200%, -100px) rotate(-45deg) scale(0.5) !important; opacity: 0; pointer-events: none; }
+.polaroid.thrown-right { transform: translate(200%, -100px) rotate(45deg) scale(0.5) !important; opacity: 0; pointer-events: none; }
+
+.deck-hint { font-size: 1.3rem; font-style: italic; color: #ffeb3b; text-shadow: 0 0 15px rgba(255,235,59,0.7); animation: floatText 2s infinite ease-in-out; }
+@keyframes floatText { 0% { transform: translateY(0); } 50% { transform: translateY(-5px); } 100% { transform: translateY(0); } }
+
+.traits { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px;}
+.trait { padding: 15px 35px; font-size: 1.2rem; font-weight: 600; letter-spacing: 1px; transition: 0.4s; cursor: default; }
+.trait:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.1); box-shadow: 0 0 25px rgba(255, 117, 140, 0.4); }
+
+.footer-msg { font-size: 1.3rem; font-style: italic; opacity: 0.9; margin-top: 20px; font-weight: 300;}
+.beating-heart { display: inline-block; animation: heartbeat 1.5s infinite; transform-origin: center; color: #ff4d4d; text-shadow: 0 0 10px rgba(255, 77, 77, 0.5);}
+@keyframes heartbeat { 0% { transform: scale(1); } 14% { transform: scale(1.3); } 28% { transform: scale(1); } 42% { transform: scale(1.3); } 70% { transform: scale(1); } }
+
+@media (max-width: 768px) {
+    .title { font-size: 3.5rem; }
+    h1 { font-size: 2rem; }
+    #timer { flex-wrap: wrap; justify-content: center; gap: 15px; }
+    .time-box { width: 90px; padding: 15px; }
+    .time-box span { font-size: 2rem; }
+    #memory-deck { width: 280px; height: 380px; }
+}
